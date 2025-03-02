@@ -1,0 +1,7 @@
+[run]
+branch = True
+[report]
+omit =
+    test/*
+    ./*__init__.py
+    src/dummy.py
