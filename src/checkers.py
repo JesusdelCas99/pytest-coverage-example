@@ -12,6 +12,7 @@ def check_age(age, citizenship):
     else:
         return "Minor"
     
+    
 def check_height(height):
     if height >= 180:
         return "Tall"
