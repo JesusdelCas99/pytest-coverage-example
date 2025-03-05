@@ -12,7 +12,7 @@ def check_age(age, citizenship):
     else:
         return "Minor"
     
-    
+
 def check_height(height):
     if height >= 180:
         return "Tall"
@@ -25,7 +25,4 @@ def check_height(height):
 def check_population(country):
     url = f"https://api.population.io/1.0/population/{country}/today-and-tomorrow/"
     response = requests.get(url)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        return {"error": "Could not retrieve the information"}
+    return response

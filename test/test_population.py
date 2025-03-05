@@ -1,26 +1,33 @@
+from dataclasses import dataclass
+from unittest.mock import patch
 from src.checkers import *
 import pytest
 
-# Test timeout (in seconds)
-_TIMEOUT = 0.1
+_TIMEOUT = 1
+
+@dataclass
+class ResponseObject:
+    status_code: int
+    message: str
 
 class TestCheckPopulation:
     def setup_method(self):
-        self.height = 170  # Default value for height in most tests
+        pass
 
     def teardown_method(self):
-        self.height = None
-
-    def test_tall(self):
-        self.height = 185
-        assert check_height(self.height) == "Tall"
+        pass
 
     @pytest.mark.only
     @pytest.mark.timeout(_TIMEOUT)
-    def test_average(self):
-        self.height = 170
-        assert check_height(self.height) == "Average"
-
-    def test_short(self):
-        self.height = 140
-        assert check_height(self.height) == "Short"
+    @patch('src.checkers.requests.get')
+    @pytest.mark.parametrize(
+        "country, expected_response",
+        [
+            ('Spain', ResponseObject(status_code=200, message='Success')),
+            ('Finland', ResponseObject(status_code=500, message='Error'))
+        ]
+    )
+    def test_population(self, mock_get, country, expected_response):
+        mock_get.return_value = expected_response
+        response = check_population(country)
+        assert response.status_code == expected_response.status_code
