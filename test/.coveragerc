@@ -1,5 +1,6 @@
 [run]
-branch = True
+#branch = True
+
 [report]
 omit =
     test/*
