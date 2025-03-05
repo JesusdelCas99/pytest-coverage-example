@@ -1,4 +1,5 @@
-pytest test/ -s -m "only" \
+pytest test/ -m "only" \
+  -s \
   -vv \
   --cov=. \
   --cov-branch \
