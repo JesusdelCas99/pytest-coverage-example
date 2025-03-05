@@ -24,5 +24,5 @@ def check_height(height):
 
 def check_population(country):
     url = f"https://api.population.io/1.0/population/{country}/today-and-tomorrow/"
-    response = requests.get(url)
+    response = requests.get(url=url)
     return response

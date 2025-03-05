@@ -31,3 +31,6 @@ class TestCheckPopulation:
         mock_get.return_value = expected_response
         response = check_population(country)
         assert response.status_code == expected_response.status_code
+        mock_get.assert_called_once_with(
+        url=f"https://api.population.io/1.0/population/{country}/today-and-tomorrow/"
+        )
