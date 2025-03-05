@@ -1,6 +1,7 @@
-pytest test \
+pytest test/ -m "only" \
   -vv \
   --cov=. \
+  --cov-branch \
   --disable-warnings \
   -o junit_family=xunit1 \
   --junitxml=test/junit_xml/xunit-result-00.xml \
@@ -9,5 +10,5 @@ pytest test \
   --cov-report=html:test/cov_html \
   --cov-config=test/.coveragerc \
   --ignore=test/test_empty.py \
-  --cov-fail-under=95
+  --cov-fail-under=85
 

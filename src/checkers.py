@@ -1,3 +1,5 @@
+import requests
+
 def check_age(age, citizenship):
     if age >= 65 and citizenship == "Local":
         return "Senior Local"
@@ -17,3 +19,12 @@ def check_height(height):
         return "Average"
     else:
         return "Short"
+    
+
+def check_population(country):
+    url = f"https://api.population.io/1.0/population/{country}/today-and-tomorrow/"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return {"error": "Could not retrieve the information"}

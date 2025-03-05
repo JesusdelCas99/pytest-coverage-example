@@ -1,4 +1,8 @@
 from src.checkers import *
+import pytest
+
+# Test timeout (in seconds)
+_TIMEOUT = 0.1
 
 class TestCheckHeight:
     def setup_method(self):
@@ -11,6 +15,8 @@ class TestCheckHeight:
         self.height = 185
         assert check_height(self.height) == "Tall"
 
+    @pytest.mark.only
+    @pytest.mark.timeout(_TIMEOUT)
     def test_average(self):
         self.height = 170
         assert check_height(self.height) == "Average"
