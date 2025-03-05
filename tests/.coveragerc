@@ -3,6 +3,6 @@
 
 [report]
 omit =
-    test/*
+    tests/*
     ./*__init__.py
     src/dummy.py
